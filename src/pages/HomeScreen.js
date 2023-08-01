@@ -1,15 +1,15 @@
 import React, {useContext} from 'react';
 import {FlatList, StyleSheet, Text, View, Button} from 'react-native';
-import BlogContext from '../context/BlogContext';
+import {Context} from '../context/BlogContext';
 
 export default function HomeScreen() {
-  const {data, AddBlogs} = useContext(BlogContext);
+  const {state, AddBlogs} = useContext(Context);
 
   return (
     <View>
       <Button title='Ekle' onPress={AddBlogs} />
       <FlatList 
-        data={data}
+        data={state}
         keyExtractor={(item) => item.title}
         renderItem={({item}) => {
           return(
