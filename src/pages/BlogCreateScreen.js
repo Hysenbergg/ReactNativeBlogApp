@@ -1,11 +1,17 @@
+import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import CreateBlog from '../components/CreateBlog';
+import {Context} from '../context/BlogContext';
 
-export default function BlogCreateScreen() {
+export default function BlogCreateScreen({navigation}) {
+  const {AddBlogs} = useContext(Context);
   return (
-    <View>
-      <Text>ScBlogCreateScreen</Text>
-    </View>
+    <CreateBlog
+      onSubmit={(title, content) => {
+        AddBlogs(title, content, () => navigation.navigate('Home'));
+      }}
+      isEditable={false}
+    />
   );
 }
 
